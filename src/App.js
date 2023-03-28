@@ -1,25 +1,40 @@
-import logo from './logo.svg';
-import './App.css';
 
+const nodesData = [
+  { id: 'A', x: 100, y: 100, data : {name : "name", job_title: "", department: ""}},
+  { id: 'B', x: 200, y: 100, data : {name : "name", job_title: "", department: ""}},
+  { id: 'C', x: 300, y: 100, data : {name : "name", job_title: "", department: ""}},
+];
+
+const templateHtml =
+ `
+  <div class="position-card">
+    <p>Node ID</p>
+  </div>;
+`
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+  //useEffect(() => {
+
+    console.log("in App()");
+    const parser = new DOMParser();
+    const templateDoc = parser.parseFromString(templateHtml, 'text/html');
+    const templateElement = templateDoc.querySelector('.position-card');
+
+    const nodeContainer = document.createElement('div');
+    nodeContainer.id = 'node-container';
+    document.body.appendChild(nodeContainer);
+
+    nodesData.forEach(node => {
+      const clone = templateElement.cloneNode(true);
+      clone.querySelector('p').textContent = node.id;
+      clone.style.left = `${node.x}px`;
+      clone.style.top = `${node.y}px`;
+      clone.style.width = `50px`;
+      nodeContainer.appendChild(clone);
+    });
+ // }, [nodesData]);
+
+  return <h1>My App</h1>;
+
 }
 
 export default App;
