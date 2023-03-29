@@ -19,19 +19,27 @@ code {
 .position-card {
   position: absolute;
   display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+
   background: #ffffff;
   border-radius: 4px;
   box-shadow: 0 1px 4px 2px hsla(0, 0%, 80%, 0.3);
+  padding: 8px;
 }
+
 .position-card:hover {
-  background: var(--node-bg-color-hover);
+  __background: var(--node-bg-color-hover);
+  box-shadow: 0 0px 8px #eee, 1px 0 3px #0000001a, -1px 0 3px #0000001a;
+
   transform: scale(1.1);
   z-index: 999;
   transition: 0.1s all ease;
-  color: #fff;
+  __color: #fff;
+  cursor: pointer;
 }
 .position-card  .job-title {
-  font-size: 1.2rem;
+  font-size: 0.80rem;
   font-weight: 500;
   padding: 10px 0;
 }
