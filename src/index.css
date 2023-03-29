@@ -12,8 +12,26 @@ code {
     monospace;
 }
 
+:root {
+  --node-bg-color-hover: rgb(31, 161, 90);
+}
+
 .position-card {
+  position: absolute;
+  display: flex;
   background: #ffffff;
   border-radius: 4px;
   box-shadow: 0 1px 4px 2px hsla(0, 0%, 80%, 0.3);
+}
+.position-card:hover {
+  background: var(--node-bg-color-hover);
+  transform: scale(1.1);
+  z-index: 999;
+  transition: 0.1s all ease;
+  color: #fff;
+}
+.position-card  .job-title {
+  font-size: 1.2rem;
+  font-weight: 500;
+  padding: 10px 0;
 }
