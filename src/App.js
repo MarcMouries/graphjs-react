@@ -1,40 +1,40 @@
-
 const nodesData = [
-  { id: 'A', x: 100, y: 100, data : {name : "name", job_title: "", department: ""}},
-  { id: 'B', x: 200, y: 100, data : {name : "name", job_title: "", department: ""}},
-  { id: 'C', x: 300, y: 100, data : {name : "name", job_title: "", department: ""}},
+  { id: 'A', x: 100, y: 100, data : {name : "name", job_title: "job_title 1", department: "department 1"}},
+  { id: 'B', x: 300, y: 100, data : {name : "name", job_title: "job_title 2", department: "department 2"}},
+  { id: 'C', x: 500, y: 100, data : {name : "name", job_title: "job_title 3", department: "department 3"}},
 ];
 
-const templateHtml =
- `
-  <div class="position-card">
-    <p>Node ID</p>
-  </div>;
+const templateHtml = (nodeData) =>
 `
+  <div class="position-card" style="left: ${nodeData.x}px; top: ${nodeData.y}px; width: 150px;">
+    <p>${nodeData.id}</p>
+    <h3 class="job-title">${nodeData.data.job_title}</h3>
+  </div>
+`;
+
+function buildNode(nodeData, templateHtml) {
+  const parser = new DOMParser();
+  const templateFilled = templateHtml(nodeData);
+  const templateElement = parser.parseFromString(templateFilled, 'text/html').querySelector('.position-card');
+  const nodeElement = templateElement.cloneNode(true);
+  nodeElement.style.left = `${nodeData.x}px`;
+  nodeElement.style.top = `${nodeData.y}px`;
+  nodeElement.style.width = `150px`;
+
+  return nodeElement;
+}
+
 function App() {
-  //useEffect(() => {
+  const nodeContainer = document.createElement('div');
+  nodeContainer.id = 'node-container';
+  document.body.appendChild(nodeContainer);
 
-    console.log("in App()");
-    const parser = new DOMParser();
-    const templateDoc = parser.parseFromString(templateHtml, 'text/html');
-    const templateElement = templateDoc.querySelector('.position-card');
-
-    const nodeContainer = document.createElement('div');
-    nodeContainer.id = 'node-container';
-    document.body.appendChild(nodeContainer);
-
-    nodesData.forEach(node => {
-      const clone = templateElement.cloneNode(true);
-      clone.querySelector('p').textContent = node.id;
-      clone.style.left = `${node.x}px`;
-      clone.style.top = `${node.y}px`;
-      clone.style.width = `50px`;
-      nodeContainer.appendChild(clone);
-    });
- // }, [nodesData]);
+  nodesData.forEach(nodeData => {
+    const nodeElement = buildNode(nodeData, templateHtml);
+    nodeContainer.appendChild(nodeElement);
+  });
 
   return <h1>My App</h1>;
-
 }
 
 export default App;
