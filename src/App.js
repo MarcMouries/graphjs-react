@@ -7,8 +7,13 @@ const nodesData = [
 const templateHtml = (nodeData) =>
 `
   <div class="position-card" style="left: ${nodeData.x}px; top: ${nodeData.y}px; width: 150px;">
-    <div>${nodeData.id}</div>
-    <div class="job-title">${nodeData.data.job_title}</div>
+    <div class="position-info">
+      <div>${nodeData.id}</div>
+      <div class="job-title">${nodeData.data.job_title}</div>
+    </div>
+		<div class="position-data">
+    <span>A</span><span>B</span>
+    </div>
   </div>
 `;
 

@@ -21,7 +21,6 @@ code {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-
   background: #ffffff;
   border-radius: 4px;
   box-shadow: 0 1px 4px 2px hsla(0, 0%, 80%, 0.3);
@@ -29,13 +28,10 @@ code {
 }
 
 .position-card:hover {
-  __background: var(--node-bg-color-hover);
   box-shadow: 0 0px 8px #eee, 1px 0 3px #0000001a, -1px 0 3px #0000001a;
-
-  transform: scale(1.1);
+  transform: scale(1.05);
   z-index: 999;
   transition: 0.1s all ease;
-  __color: #fff;
   cursor: pointer;
 }
 .position-card  .job-title {
@@ -43,3 +39,16 @@ code {
   font-weight: 500;
   padding: 10px 0;
 }
+
+.position-info {
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  background-color: #eee;
+}
+.position-data {
+    background-color: white;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+  }
