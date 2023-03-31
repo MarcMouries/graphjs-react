@@ -12,7 +12,7 @@ const templateHtml = (nodeData) =>
       <div class="job-title">${nodeData.data.job_title}</div>
     </div>
 		<div class="position-data">
-    <span>A</span><span>B</span>
+    <div>A</div><div>B</div>
     </div>
   </div>
 `;
