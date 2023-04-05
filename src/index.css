@@ -16,6 +16,12 @@ code {
   --node-bg-color-hover: rgb(31, 161, 90);
 }
 
+.chart-container {
+  padding-top: 10px;
+  height: 1200px;
+  background-color: white;
+}
+
 .position-card {
   position: absolute;
   display: flex;
@@ -33,10 +39,11 @@ code {
   transition: 0.1s all ease;
   cursor: pointer;
 }
-.position-card  .job-title {
+
+.position-card .job-title {
   font-size: 0.80rem;
   font-weight: 500;
-  padding: 10px 0;
+  padding: 8px;
 }
 
 .position-info {
@@ -44,16 +51,16 @@ code {
   background-color: #eee;
   display: flex;
   flex-direction: column;
-  padding: 8px;
   width: 100%;
 }
+
 .position-data {
-    background-color: white;
-    display: flex;
-    flex-direction: row;
-    align-content: center;
-    flex-wrap: wrap;
-    align-items: center;
-    justify-content: space-around;
-    width: 100%;
+  background-color: white;
+  display: flex;
+  flex-direction: row;
+  align-content: center;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-around;
+  width: 100%;
 }
