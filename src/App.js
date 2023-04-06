@@ -54,6 +54,7 @@ function App() {
 
     const orgChart = new OrgChart(chartElement);
     console.log("orgChart", orgChart);
+    orgChart.setData([]);
   };
 
   /* 
