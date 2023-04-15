@@ -40,10 +40,15 @@ code {
   cursor: pointer;
 }
 
+.position-card .name {
+  font-size: 0.80rem;
+  font-weight: 500;
+  padding: 4px 8px;
+}
 .position-card .job-title {
   font-size: 0.80rem;
   font-weight: 500;
-  padding: 8px;
+  padding: 4px 8px;
 }
 
 .position-info {

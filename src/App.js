@@ -7,7 +7,7 @@ const nodesData = [
   { id: "C", x: 500, y: 100, data: { name: "name", job_title: "job_title 3", department: "department 3" } },
 ];
 
-const templateHtml = (nodeData) =>
+const nodeTemplateHtml = (nodeData) =>
   `
   <div class="position-card" style="left: ${nodeData.x}px; top: ${nodeData.y}px; width: 150px;">
     <div class="position-info">
@@ -22,7 +22,7 @@ const templateHtml = (nodeData) =>
 
 function buildNode(nodeData, templateHtml) {
   const parser = new DOMParser();
-  const templateFilled = templateHtml(nodeData);
+  const templateFilled = nodeTemplateHtml(nodeData);
   const templateElement = parser.parseFromString(templateFilled, "text/html").querySelector(".position-card");
   const nodeElement = templateElement.cloneNode(true);
   nodeElement.style.left = `${nodeData.x}px`;
@@ -46,34 +46,34 @@ function createLine(svg, x1, y1, x2, y2) {
 function App() {
   const chartRef = useRef(null);
 
-
-
   const createNodeContainer = () => {
     const chartElement = chartRef.current;
     console.log(chartElement);
+
+    const nodeContainer = document.createElement('div');
+    nodeContainer.id = 'node-container';
+    chartElement.appendChild(nodeContainer);
+  
+    nodesData.forEach(nodeData => {
+      const nodeElement = buildNode(nodeData, nodeTemplateHtml);
+      nodeContainer.appendChild(nodeElement);
+    });
 
     const orgChart = new OrgChart(chartElement);
     console.log("orgChart", orgChart);
     orgChart.setData([]);
   };
 
-  /* 
-  const nodeContainer = document.createElement('div');
-  nodeContainer.id = 'node-container';
-  chartElement.appendChild(nodeContainer);
+  
 
-  nodesData.forEach(nodeData => {
-    const nodeElement = buildNode(nodeData, templateHtml);
-    nodeContainer.appendChild(nodeElement);
-  });
 
   //const nodeA = document.getElementById('A');
   //const nodeB = document.getElementById('B');
   const svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
   document.body.appendChild(svg);
-  const  x1=100, y1=100, x2=200, y2=200;
+  const  x1=50, y1=100, x2=300, y2=100;
   createLine(svg, x1, y1, x2, y2);
-*/
+
   useEffect(() => {
     createNodeContainer();
   }, []);
